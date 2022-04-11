@@ -25,8 +25,8 @@
 #### 2.1.1 建筑分布
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前，西单大悦城共有十四层，分别为B1-B4，F1-F10，由于B3、B4为停车场，F8-F10与写字楼相关，故本次方案只涉及地上1-7层以及地下2层，其中F1层的二维与三维具体分布如下图所示：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/519ab33ae98d466e99f4cec3c0d0bdfd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ff8a3ce53b214a5598424809bb42942c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/1.png)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/2.png)
 
 #### 2.1.2 占地面积
 
@@ -34,7 +34,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，以1层为例进行占地面积说明，根据地图中的图例与注记以及标记工具PxCook可大致算出每一层的面积占比，如：地图上120px代表现实中的12m，那么970px就代表97m，1304px代表130m，即1层的长约为130m，宽约为97m，占地面积约为12610$m^{2}$，标注图如下图所示：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9b1bb05bdc37402080252378b245d464.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/3.png)
 
 其余楼层标注占地面积如下表所示：
 
@@ -162,7 +162,7 @@
 
 ​        为了满足以上的网络拓扑设计原则，并且综合考虑西单大悦城的具体情况，该无线网络覆盖方案中选择采用星型网络拓扑结构对商场的无线网络进行设计，以下是该网络拓扑设计图。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/94cbc07d08104a878667451ea766d0bd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/4.png)
 
 
 
@@ -232,17 +232,17 @@ VLAN的配置过程：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交换机之间通过交换桥协议数据单元BPDU(Bridge Protocol Data Unit)来实现；为稳定的生成树拓扑结构选择一个根桥；为每个交换网段选择一台指定交换机；将冗余路径上的交换机置为Blocking，来消除网络中的环路。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/48ff598aa0ca46e98efa0eb80844a4e0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/5.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上图中，当我们从PC2发送数据给PC3时，如果交换机开启了STP协议，则会在所有通路中计算出一条无环最优路径，同时在每个环路中选择一个冗余路径的端口进行阻塞。这样数据就会经无环最优路径PC2->Switch9->Switch8->Switch10->Switch11->PC3顺利流通，而不会在Switch9和Switch11之间传输，避免发生广播风暴大量占用交换机的资源，降低系统的效率和稳定性。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c80d46960f194938bdc61067ca5f6468.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/6.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STP协议优于简单的树形拓扑的一点就是，在保证不会发生广播风暴的前提下，它不要求物理链路完全无环。在树形拓扑结构中，源与目的之间路径都是唯一的，一旦中间任何地方出现故障都会导致二者完全断联。而在上图中，开启了交换机的STP协议后，即使原先选定的无环最优路径故障，也能找出另一条无环路径作为代替，降低了系统的瘫痪风险，大大增加了其可用性。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/47cccbbdfec3422eb7d40f0d57f646af.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/7.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为对比，我们关闭交换机的STP协议，由图可知所有交换机端口全部活跃。这时由于没有任何限制，每个交换机都会广播式地把数据向除源端口外的所有端口转发，导致广播风暴，中间的环路上充斥着大量的冗余重复数据，交换机性能急剧下降，直至中断业务。
@@ -388,7 +388,7 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常用的网络服务有Active Directory服务、DHCP服务、DNS服务、WWW服务以及打印服务等。根据网络规模的大小，规划服务器时可以将多个服务器角色部署到同一台服务器上，以确保充分利用服务器资源。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6403df235a35401d91647b2b65f62bfd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/8.png)
 
 
 
@@ -594,7 +594,7 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;综合布线六大子系统如下，因为商场当成了一栋大楼，所以建筑群子系统暂且不用考虑。主机房放置在二楼。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c72b969dcde449f1a13e8a34210feecf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/9.png)
 
 
 #### 4.1 工作区子系统
@@ -605,12 +605,12 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信息插座采用超五类信息插座模块，配标准的配标准的86mm×86mm单、双口标准面板，出口均为RJ45接口。信息插座的安装方式采用墙面暗装在弱电箱里，与电源插座平行间距保持300毫米。用户端数据设备（如计算机）用超五类RJ45跳线与插座连接，语音设备（如电话）可用RJ11跳线与插座连接。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/69882a439b424c94bc1401ac54b9cfb5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/10.png)
 
 
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5c2611b6ad874cec83b0b3d643df2415.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/11.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工作区子系统是包含每一个店铺都有一个弱电箱，靠近柜台位置（假设商场里柜台都靠近中心点的方向），离地30cm。弱电箱里包括有线电视线，电话线，网线，USB线等等。弱电箱有一个US-8-60W的千兆4口POE交换机，可以连接每个店铺以及接近走廊位置的吸顶AP设备，再连接一个光猫。网线使用七类秋叶原双屏蔽网线和相应的双屏蔽水晶头。
@@ -624,13 +624,12 @@ AAA 支持以下认证方式：
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;水平布线应采用星形拓扑结构，每个工作区的信息插座都要和管理区相连。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;水平干线子系统与垂直干线子系统的区别在于：垂直干线子系统通常位于建筑物内垂直的弱电间，而水平干线子系统通常处在同一楼层上，线缆一端接在配线问的配线架上，另一端接在信息插座上；垂直干线子系统通常采用大对数双绞电缆或光缆，而水平干线子系统多为4对非屏蔽双绞电缆，能支持大多数终端设备，在有磁场干扰或信息保密时用屏蔽双绞线，在高宽带应用时采用光缆。
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bb8ac0936c964a68837260c3c451f99d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/12.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以西单大悦城二楼为例，大约12000$m^{2}$，这次所购买的AP设备为TL-XAP3007GC-PoE/DC易展版，覆盖面积为150$m^{2}$ 左右，而每个店铺平均大小为24*6=144$m^{2}$  左右，加上5G信号穿墙效果不是很好，所以每个店铺安装一个AP，再考虑到方便调试和维护，每个店铺装有自己的嵌入式弱电箱。 一层楼大概有25-30个店铺，所以店铺内安装30个AP设备，走廊上安装50个AP设备。采用电缆管道布线法，这样布线的优点是防火性好。所有网线需要连接到每一层的总弱电箱，也就是管理子系统里。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2df58c0a2a8e4c46ba4377ed51675760.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/13.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主机房需要靠近电梯，这样方便铺垂直干线子系统，水平线缆采用超五类双绞线，每层楼大约需要600米的超五类双绞线。通过配线间引出，延金属桥架内敷设，出桥架后至工作区，穿KGB管沿墙、沿地板内暗敷进入信息插座端口。垂直桥架沿墙敷设，水平桥架于吊顶内安装，高度与装修施工方协商处理。
@@ -639,10 +638,10 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理子系统设备设置在每层配线设备的房间内，管理子系统由交接间的配线设备、输入/输出设备等组成，管理子系统也可应用于设备间子系统，管理子系统应采用单点管理双交接口，交接场的取决于工作区，综合布线系统规模和选用的硬件，在管理规模大、复杂、有二级交接间时，才放置双点管理双交接在管理点，根据应用环境用标记标入来标出各个端接场，对于交换间的配线设备宜采用色标区别种类用途的配线区。并且在交接场之间应留出空间，以便容纳未来扩充的交接硬件。在该小区中按几层为单元在弱电井内放置配线架和语音采用IBDN的BIX安装架进行汇总，将每户用不同的标记进行分开，数据为模块式配线架，通过交换机、连成一个局域网到设备间，水平线缆与垂直线缆用标准的跳线进行连接进行管理，全部集中在一个箱子里，只放置一个交接间，不使用二级交接。 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1b4f9b79f400491a9bb04fdef513e8d9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/14.png)
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/58248016b2e94a4488bcf1e3298a4add.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/15.png)
 
 
 
@@ -653,12 +652,12 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;垂直干线子系统布线的建筑方式：预埋管路、电缆竖井和上升房（又称交接间或干线间）。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2ff4fcf1555448b2bcc472e8eefb22cc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_14,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/16.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;垂直干线子系统使用光纤电缆作为主干线路。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4782f1272a7c4daebd0681f8c9a53447.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/17.png)
 
 
 
@@ -673,15 +672,14 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们设计的设备间管理子系统在二楼。设备间是水平子系统与主干系统的连接和管理区，主要用于放置机柜、电缆配线架及网络设备等。数据及语音配线架均放置于一个机柜内。其中采用24口 RJ45非屏蔽模块化跳线盘用于端接水平电缆，采用110型跳线连接模块端接大对数主干电缆，采用光纤配线盘端接光纤主干电缆。中心机房（主配线间）放置42U机柜1个。在一层放置一个6U墙柜分配线间）。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b122adfa5c1841baa75f79f1f98e7c28.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_12,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/18.png)
 
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bf344e88226242109187b45a449bbeec.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/19.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强电箱：商业装修中使用的配电箱。配电箱里面的电压一般为380/220V，用于电能配送，下面可带照明灯、风机、水泵等各种电气设备。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/82efcdc8dc604b5185881d55e838c07d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/20.png)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室内强电箱（也就是配电箱）的尺寸（长度x宽度x厚度）选择480x250x120（单位为mm）。强电箱的安装位置较高，一般在墙面离地面高1.5米处。总开关建议选用C63A或者是C50A的2P空气开关;照明开关建议选用C16A的1P+N的空气开关;普通插座回路的开关建议选用C16A的1P带漏电的漏电保护器;柜式空调插座回路的开关建议选用C20A的1P带漏电的漏电保护器;电热水器插座回路的开关建议选用C20A的1P带漏电的漏电保护器。每个店铺内一个，在走廊中根据需求按一定距离安装强电箱。
@@ -712,7 +710,7 @@ AAA 支持以下认证方式：
 
 - 机房设备远程控制管理系统(KVM)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4835c4eb681448fd848f838990ebdb8b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/21.png)
 
 
 ##### **4.****6****.2 机房布局**
@@ -729,7 +727,7 @@ AAA 支持以下认证方式：
 
 6、在做机房布局设计时需要与用户多沟通，深入了解用户对布局及功能区的需求，最终确定布局后才能进行下一步的工作。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6894b94ecac84ec0b38f1243c6a84eba.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/22.png)
 
 
 ##### 4.6.3 机房装修
@@ -758,7 +756,7 @@ AAA 支持以下认证方式：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小型机（甚至更高级别的计算机）；服务器；存储设备；网络设备（交换机、路由器、防火墙等）；应急照明；消防系统；环境监控系统；机房门禁、安防监控等系统。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6c672ebede324b17821bd5b9944a35c6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATWFyc2J1cHQ=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![image](https://github.com/Dylanzl/Shopping-Mall-Wireless-Network/blob/main/23.png)
 
 
 #### 4.7 设备选型
